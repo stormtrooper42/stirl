@@ -54,7 +54,7 @@
 					echo self::errorPw();
 				}		
 			}else{
-				echo self::errorPw();
+				echo "lol";
 			}
 		}
 

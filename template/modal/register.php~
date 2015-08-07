@@ -1,5 +1,5 @@
 <?php
-	if(isset($_POST['Rsubmit'])){
+	if(isset($_POST['submit'])){
 		if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email']) && $_POST['username'] != '' && $_POST['password'] != '' && $_POST['email'] != ''){
 			// register process
 			echo $user->register($_POST['username'],$_POST['email'],$_POST['password']);
@@ -26,7 +26,7 @@
 	    	?>
       </div>
       <div class="modal-footer">
-	        <button type="submit" name="Rsubmit" id="submit" class="btn btn-primary">S'inscrire</button>
+	        <button type="submit" name="submit" id="submit" class="btn btn-primary">S'inscrire</button>
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
       	</form>
       </div>
