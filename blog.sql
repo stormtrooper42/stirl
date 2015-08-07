@@ -35,13 +35,6 @@ CREATE TABLE IF NOT EXISTS `articles` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
---
--- Contenu de la table `articles`
---
-
-INSERT INTO `articles` (`id`, `title`, `content`, `category`, `dateOfWriting`) VALUES
-(2, 'Jason est sur linux !', 'Trop le lolz.', 'Système d''exploitation', '07/08/2015');
-
 -- --------------------------------------------------------
 
 --
@@ -53,13 +46,6 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `name` varchar(255) NOT NULL DEFAULT 'Non classé',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
---
--- Contenu de la table `categories`
---
-
-INSERT INTO `categories` (`id`, `name`) VALUES
-(1, 'Système d''exploitation');
 
 -- --------------------------------------------------------
 
