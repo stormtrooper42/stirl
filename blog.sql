@@ -77,13 +77,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
---
--- Contenu de la table `users`
---
-
-INSERT INTO `users` (`id`, `username`, `password`, `email`, `uniqID`, `admin`) VALUES
-(2, 'jasonvnm', '$2y$10$bcnTGZhfJ2X2B26AJ4S8vORqEX50MjsxoEODot5kGlA7HC0csiGHO', 'jasonlebigbossdbz@hotmail.com', '55c51186a1618', 1);
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
