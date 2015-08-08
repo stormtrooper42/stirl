@@ -49,7 +49,7 @@
     <h2>Ecrire un article</h2>
 
     	<?php 
-    		if(isset($_SESSION['admin'])){
+    		if($user::adminDetectedControl()){
 				if($user::isAdmin($_SESSION['admin'],$_SESSION['uniqId'])){
 					if(isset($_POST['submit'])){
 						$title = $app::destroyHTML($_POST['title']);

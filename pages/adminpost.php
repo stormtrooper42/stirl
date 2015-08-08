@@ -78,7 +78,13 @@
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
-
+    <script type="text/javascript">
+        window.setTimeout(function() {
+          $("#alert_message").fadeTo(500, 0).slideUp(500, function(){
+            $(this).remove(); 
+          });
+        }, 3000);
+    </script>
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 

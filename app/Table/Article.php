@@ -12,7 +12,7 @@
 		public $dateOfWriting;
 		public $category;
 
-		public function __construct($id =null){
+		public function __construct($id = null){
 			if($id != null){
 				$db = new Database('blog');
 				$article = $db->prepare("SELECT * FROM articles WHERE id = ?",[$id],"App\Table\Article", true);
@@ -63,9 +63,25 @@
 			}
 		}
 
-		public static function getArticlesYears($year){
+		public static function getAll($category = null){
+			$db = new Database('blog');
+			if($category){
+				$query = $db->prepare("SELECT * FROM articles WHERE category = :category ORDER BY dateOfWriting DESC, id DESC",array("category"=>$category), "App\Table\Article");
+			}else{
+				$query = $db->query("SELECT * FROM articles ORDER BY dateOfWriting DESC, id DESC", "App\Table\Article");
+			}
+			return $query;
+		}
+
+		public static function getArticlesWritedIn($year){
 			$db = new Database('blog');
 			$query = $db->prepare("SELECT * FROM articles WHERE Year(dateOfWriting) = :year ORDER BY id ASC",array("year"=>$year), "App\Table\Article");
+			return $query;
+		}
+
+		public static function getArticlesYears(){
+			$db = new Database('blog');
+			$query = $db->query("SELECT DISTINCT YEAR(dateOfWriting) AS date_year FROM articles ","App\Table\Article");
 			return $query;
 		}
 

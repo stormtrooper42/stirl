@@ -53,55 +53,61 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <?php if(isset($_GET['category'])){ 
+                <?php 
                 
-                $category = $app::destroyHTML($_GET['category']);
-                
-                $query = $db->prepare("SELECT * FROM articles WHERE category = :category ORDER BY dateOfWriting DESC, id DESC",array("category"=>$category), "App\Table\Article");
-                
-                if($query == null){
-                    echo "Aucun article trouvé...";
-                }
+                $art = new App\Table\Article();
 
-                foreach($query as $article): ?>
-                        <div class="post-preview post-preview2" onclick="location.href='<?php echo $article->getURL(); ?>';">
-                            <a href="<?php echo $article->getURL(); ?>">
-                                <h2 class="post-title" style="font-size:25px;">
-                                    <?php echo ucfirst($article->title); ?>
-                                </h2>
-                                <h5>
-                                    <span style="font-size:15px" class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> <?php echo ucfirst($article->category); ?>
-                                </h5>
-                                <h3 class="post-subtitle">
-                                    <?php 
-                                        echo ucfirst($article->getExtrait());
-                                    ?>
-                                </h3>
-                            </a>
-                            <p class="post-meta">Posté le <?php echo $article->getDate(); ?></p>
-                        </div>
-                    <?php endforeach; ?>
+                if(isset($_GET['category'])){ 
 
-                <?php }else{ ?>
+                    $category = $app::destroyHTML($_GET['category']);
+                    
+                    $query = $art::getAll($category);
+                    
+                    if($query == null){
+                        echo "Aucun article trouvé...";
+                    }
 
-                    <?php foreach($db->query("SELECT * FROM articles ORDER BY dateOfWriting DESC, id DESC", "App\Table\Article" ) as $article): ?>
-                        <div class="post-preview post-preview2" onclick="location.href='<?php echo $article->getURL(); ?>';">
-                            <a href="<?php echo $article->getURL(); ?>">
-                                <h2 class="post-title" style="font-size:25px;">
-                                    <?php echo ucfirst($article->title); ?>
-                                </h2>
-                                <h5>
-                                    <span style="font-size:15px" class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> <?php echo ucfirst($article->category); ?>
-                                </h5>
-                                <h3 class="post-subtitle">
-                                    <?php 
-                                        echo ucfirst($article->getExtrait());
-                                    ?>
-                                </h3>
-                            </a>
-                            <p class="post-meta">Posté le <?php echo $article->getDate(); ?></p>
-                        </div>
-                    <?php endforeach;
+                    foreach($query as $article): ?>
+                            <div class="post-preview post-preview2" onclick="location.href='<?php echo $article->getURL(); ?>';">
+                                <a href="<?php echo $article->getURL(); ?>">
+                                    <h2 class="post-title" style="font-size:25px;">
+                                        <?php echo ucfirst($article->title); ?>
+                                    </h2>
+                                    <h5>
+                                        <span style="font-size:15px" class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> <?php echo ucfirst($article->category); ?>
+                                    </h5>
+                                    <h3 class="post-subtitle">
+                                        <?php 
+                                            echo ucfirst($article->getExtrait());
+                                        ?>
+                                    </h3>
+                                </a>
+                                <p class="post-meta">Posté le <?php echo $article->getDate(); ?></p>
+                            </div>
+                        <?php endforeach; ?>
+
+                    <?php }else{ 
+
+                        $query = $art::getAll();
+
+                        foreach($query as $article): ?>
+                            <div class="post-preview post-preview2" onclick="location.href='<?php echo $article->getURL(); ?>';">
+                                <a href="<?php echo $article->getURL(); ?>">
+                                    <h2 class="post-title" style="font-size:25px;">
+                                        <?php echo ucfirst($article->title); ?>
+                                    </h2>
+                                    <h5>
+                                        <span style="font-size:15px" class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> <?php echo ucfirst($article->category); ?>
+                                    </h5>
+                                    <h3 class="post-subtitle">
+                                        <?php 
+                                            echo ucfirst($article->getExtrait());
+                                        ?>
+                                    </h3>
+                                </a>
+                                <p class="post-meta">Posté le <?php echo $article->getDate(); ?></p>
+                            </div>
+                        <?php endforeach;
                 }
                 ?>
                 <!-- Pager 

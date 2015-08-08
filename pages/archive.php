@@ -46,11 +46,10 @@
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 
             <?php
-                
-                if(isset($_GET['year']) && $_GET['year'] > 2000){
-                    $article = new App\Table\Article();
+                $article = new App\Table\Article();
+                if(isset($_GET['year']) && $_GET['year'] > 2000){    
                     $year = $app::destroyHTML($_GET['year']);
-                    $query = $article::getArticlesYears($year);
+                    $query = $article::getArticlesWritedIn($year);
                     foreach($query as $article): ?>
                         <div class="post-preview post-preview2" onclick="location.href='<?php echo $article->getURL(); ?>';">
                             <a href="<?php echo $article->getURL(); ?>">
@@ -70,7 +69,8 @@
                         </div>
                     <?php endforeach;
                 }else{
-                    $query = $db->query("SELECT DISTINCT YEAR(dateOfWriting) AS date_year FROM articles ","App\Table\Article");
+                    
+                    $query = $article::getArticlesYears();
                 
                     if($query == null){
                         echo "Aucun article trouvé...";

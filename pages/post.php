@@ -45,8 +45,6 @@
     <!-- Navigation -->
     <?php require_once("../template/header.php"); ?>
 
-
-
     <!-- Post Content -->
     <article>
         <div class="container">
@@ -64,7 +62,7 @@
 
                         <li class="next">
                             <?php 
-                                if(isset($_SESSION['admin'])){
+                                if($user::adminDetectedControl()){
                                     if($user::isAdmin($_SESSION['admin'],$_SESSION['uniqId'])){
                                         ?>
                                              <a href="index.php?page=adminpostremove&id=<?php echo $article->id; ?>"><span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span> Supprimer l'article</a>
