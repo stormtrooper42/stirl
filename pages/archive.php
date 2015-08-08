@@ -37,15 +37,6 @@
     <!-- Navigation -->
     <?php 
         require_once("../template/header.php"); 
-
-        if(isset($_GET['register']) && !empty($_GET['register'])){
-            if($_GET['register'] == "success"){
-                echo $user::successRegister();
-            }elseif($_GET['register'] == "failed"){
-                echo $user::errorInfos();
-            }
-        }
-
     ?>
 
     
@@ -53,38 +44,12 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <?php if(isset($_GET['category'])){ 
                 
-                $category = $app::destroyHTML($_GET['category']);
+            <?php
                 
-                $query = $db->prepare("SELECT * FROM articles WHERE category = :category ORDER BY id DESC",array("category"=>$category), "App\Table\Article");
-                
-                if($query == null){
-                    echo "Aucun article trouvé...";
-                }
-
-                foreach($query as $article): ?>
-                        <div class="post-preview post-preview2" onclick="location.href='<?php echo $article->getURL(); ?>';">
-                            <a href="<?php echo $article->getURL(); ?>">
-                                <h2 class="post-title" style="font-size:25px;">
-                                    <?php echo ucfirst($article->title); ?>
-                                </h2>
-                                <h5>
-                                    <span style="font-size:15px" class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> <?php echo ucfirst($article->category); ?>
-                                </h5>
-                                <h3 class="post-subtitle">
-                                    <?php 
-                                        echo ucfirst($article->getExtrait());
-                                    ?>
-                                </h3>
-                            </a>
-                            <p class="post-meta">Posté le <?php echo $article->getDate(); ?></p>
-                        </div>
-                    <?php endforeach; ?>
-
-                <?php }else{ ?>
-
-                    <?php foreach($db->query("SELECT * FROM articles ORDER BY id DESC", "App\Table\Article" ) as $article): ?>
+                if(isset($_GET['year']) && $_GET['year'] > 2000){
+                    $year = $app::destroyHTML($_GET['year']);
+                    foreach($db->prepare("SELECT * FROM articles WHERE Year(dateOfWriting) = :year ORDER BY id DESC",array("year"=>$year), "App\Table\Article") as $article): ?>
                         <div class="post-preview post-preview2" onclick="location.href='<?php echo $article->getURL(); ?>';">
                             <a href="<?php echo $article->getURL(); ?>">
                                 <h2 class="post-title" style="font-size:25px;">
@@ -102,8 +67,27 @@
                             <p class="post-meta">Posté le <?php echo $article->getDate(); ?></p>
                         </div>
                     <?php endforeach;
+                }else{
+                    $query = $db->query("SELECT DISTINCT YEAR(dateOfWriting) AS date_year FROM articles ","App\Table\Article");
+                
+                    if($query == null){
+                        echo "Aucun article trouvé...";
+                    }
+
+                    foreach($query as $article): ?>
+                        <div class="post-preview post-preview2" style="padding-top:0;padding-bottom:25px" onclick="location.href='index.php?page=archive&year=<?php echo $article->date_year; ?>';">
+                            <a href="">
+                                <h2 class="post-title" style="font-size:25px;">
+                                    <?php echo $article->date_year; ?>
+                                </h2>
+                            </a>
+                        </div>
+                    <?php
+
+                    endforeach; 
                 }
-                ?>
+
+            ?>
                 <!-- Pager 
                 <ul class="pager">
                     <li class="next">

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><?php echo $config->get("blog_title"); ?> - Bienvenue</title>
+    <title><?php echo $config->get("blog_title"); ?></title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -37,15 +37,6 @@
     <!-- Navigation -->
     <?php 
         require_once("../template/header.php"); 
-
-        if(isset($_GET['register']) && !empty($_GET['register'])){
-            if($_GET['register'] == "success"){
-                echo $user::successRegister();
-            }elseif($_GET['register'] == "failed"){
-                echo $user::errorInfos();
-            }
-        }
-
     ?>
 
     
@@ -74,8 +65,6 @@
             </div>
         </div>
     </div>
-
-    <hr>
 
     <!-- Footer -->
     <?php require_once("../template/footer.php"); ?>

@@ -74,7 +74,7 @@
 								"title"=>$title,
 								"content"=>$content,
                                 "category"=>$category,
-								"dateOfWriting"=>date("d/m/Y")
+								"dateOfWriting"=>date("Y-m-d")
 							));
 						}
 						$article = new App\Table\Article();

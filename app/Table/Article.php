@@ -48,7 +48,9 @@
 		}
 
 		public function getDate(){
-			return $this->dateOfWriting;
+			$originalDate = $this->dateOfWriting;
+			$newDate = date("d/m/Y", strtotime($originalDate));
+			return $newDate;
 		}
 
 		public function getContent(){
