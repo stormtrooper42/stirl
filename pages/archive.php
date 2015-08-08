@@ -49,7 +49,7 @@
                 
                 if(isset($_GET['year']) && $_GET['year'] > 2000){
                     $year = $app::destroyHTML($_GET['year']);
-                    foreach($db->prepare("SELECT * FROM articles WHERE Year(dateOfWriting) = :year ORDER BY id DESC",array("year"=>$year), "App\Table\Article") as $article): ?>
+                    foreach($db->prepare("SELECT * FROM articles WHERE Year(dateOfWriting) = :year ORDER BY id ASC",array("year"=>$year), "App\Table\Article") as $article): ?>
                         <div class="post-preview post-preview2" onclick="location.href='<?php echo $article->getURL(); ?>';">
                             <a href="<?php echo $article->getURL(); ?>">
                                 <h2 class="post-title" style="font-size:25px;">
