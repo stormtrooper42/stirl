@@ -27,3 +27,9 @@ config.php:
 - Create your account
 - DELETE THE ACCOUNTCREATION.PHP FILE IN PAGES FOLDERS
 - Go in your database, users table and change 0 to 1 in admin column
+
+### Customisation
+
+You can personalize completely your blog if you know about it in programming.
+
+You can change the header by replacing the image being in public / img (home-bg).
