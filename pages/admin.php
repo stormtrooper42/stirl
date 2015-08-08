@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><?php echo $app->title; ?> - Bienvenue</title>
+    <title><?php echo $config->get("blog_title"); ?> - Bienvenue</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -40,12 +40,26 @@
 
     <!-- Main Content -->
     <div class="container">
-        <?php
+    <?php
         require("../template/adminmenu.php");
-          if(!isset($_SESSION['admin'])){
+        if(!isset($_SESSION['admin'])){
             $app->redirect("index.php?page=welcome");
-          }
-        ?>
+        }
+    ?>
+    <h2>Hey, <?php echo $_SESSION['admin']; ?> ! Ça va bien ?</h2>
+    
+    <h3>Statistiques du jour:</h3>
+    Maybe
+    <br />
+
+    <h3>Statistiques du mois:</h3>
+    Maybe
+    <br />
+
+    <h3>Statistiques de l'année:</h3>
+    Maybe
+    <br />
+
     </div>
 
     <hr>

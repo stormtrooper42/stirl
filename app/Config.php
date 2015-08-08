@@ -19,9 +19,7 @@
 
 		public function __construct()
 		{
-
 			$this->id = uniqid();
-
 			$this->settings = require dirname(__DIR__) . '/config/config.php';
 		}
 

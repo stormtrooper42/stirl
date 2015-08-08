@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><?php echo $app->title; ?> - Poster un article</title>
+    <title><?php echo $config->get("blog_title"); ?> - Poster un article</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">

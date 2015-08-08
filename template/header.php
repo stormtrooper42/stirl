@@ -11,7 +11,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.php"><?php echo $app->title; ?></a>
+            <a class="navbar-brand" href="index.php"><?php echo $config->get("blog_title"); ?></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -31,9 +31,9 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="site-heading">
-                    <h1><?php echo $app->title; ?></h1>
+                    <h1><?php echo $config->get("blog_title"); ?></h1>
                     <hr class="small">
-                    <span class="subheading"><?php echo $app->caption; ?></span>
+                    <span class="subheading"><?php echo $config->get("blog_subtitle"); ?></span>
                 </div>
             </div>
         </div>

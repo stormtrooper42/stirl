@@ -8,18 +8,7 @@ Stirl is a blog system using PHP without framework.
 
 ### Installation
 
-You need to change the database info in app/Database.php and config/config.php
-
-Database.php:
-
-```php
-public function __construct($db_name, $db_user = 'root', $db_pass = 'djason', $db_host = 'localhost'){
-			$this->db_name = $db_name;
-			$this->db_user = $db_user;
-			$this->db_pass = $db_pass;
-			$this->db_host = $db_host;
-}
-```
+You need to modify the config file in config/config.php
 
 config.php:
 

@@ -2,6 +2,7 @@
 
 	namespace App;
 	use \PDO;
+	use App\Config;
 
 	class Database{
 
@@ -11,13 +12,14 @@
 		private $db_host;
 		private $pdo;
 
-		public function __construct($db_name, $db_user = 'root', $db_pass = 'djason', $db_host = 'localhost'){
-
-			$this->db_name = $db_name;
-			$this->db_user = $db_user;
-			$this->db_pass = $db_pass;
-			$this->db_host = $db_host;
-
+		public function __construct($db_name, $db_user = 'root', $db_pass = 'root', $db_host = 'localhost'){
+			$config = new Config();
+			if($config != null){
+				$this->db_name = $config->get("db_name");
+				$this->db_user = $config->get("db_user");
+				$this->db_pass = $config->get("db_pass");
+				$this->db_host = $config->get("db_host");
+			}
 		}
 
 		private function getPDO(){

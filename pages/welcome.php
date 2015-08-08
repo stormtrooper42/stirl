@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><?php echo $app->title; ?> - Bienvenue</title>
+    <title><?php echo $config->get("blog_title"); ?> - Bienvenue</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -66,7 +66,7 @@
                 foreach($query as $article): ?>
                         <div class="post-preview post-preview2" onclick="location.href='<?php echo $article->getURL(); ?>';">
                             <a href="<?php echo $article->getURL(); ?>">
-                                <h2 class="post-title">
+                                <h2 class="post-title" style="font-size:25px;">
                                     <?php echo ucfirst($article->title); ?>
                                 </h2>
                                 <h5>
@@ -88,7 +88,7 @@
                     <?php foreach($db->query("SELECT * FROM articles ORDER BY id DESC", "App\Table\Article" ) as $article): ?>
                         <div class="post-preview post-preview2" onclick="location.href='<?php echo $article->getURL(); ?>';">
                             <a href="<?php echo $article->getURL(); ?>">
-                                <h2 class="post-title">
+                                <h2 class="post-title" style="font-size:25px;">
                                     <?php echo ucfirst($article->title); ?>
                                 </h2>
                                 <h5>
@@ -116,7 +116,6 @@
         </div>
     </div>
 
-    <hr>
 
     <!-- Footer -->
     <?php require_once("../template/footer.php"); ?>

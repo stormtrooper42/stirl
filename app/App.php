@@ -2,9 +2,6 @@
 	namespace App;
 
 	class App{
-		
-		public $title = "Jasonvnm";
-		public $caption = "Développeur PHP";
 
 		private static $_instance;
 

@@ -8,6 +8,8 @@ body {
   font-family: 'Lora', 'Times New Roman', serif;
   font-size: 20px;
   color: #404040;
+  background-image: url("http://subtlepatterns.com/patterns/gplaypattern.png");
+  background-repeat: repeat;
 }
 p {
   line-height: 1.5;
@@ -479,4 +481,8 @@ body {
   font-weight: 800;
   letter-spacing: 1px;
   text-align:center;
+}
+
+.linkcircle:hover{
+  color: #405270;
 }

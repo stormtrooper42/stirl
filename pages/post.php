@@ -17,7 +17,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><?php echo $app->title; ?> - <?php echo $article->title; ?></title>
+    <title><?php echo $config->get("blog_title"); ?> - <?php echo $article->title; ?></title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -52,7 +52,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <h1 style="font-size:40px"><?php echo $article->title; ?></h1>
+                    <h1 style="font-size:25px;"><?php echo $article->title; ?></h1>
                     Posté le <?php echo $article->getDate(); ?>
                     <p><?php 
                         echo $article->getContent();
