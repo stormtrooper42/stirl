@@ -1,6 +1,6 @@
 # Stirl
 
-Stirl is a blog system using PHP without framework.
+Stirl is a ultra light blog system using PHP without framework.
 
   - Easy
   - Free
