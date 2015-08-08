@@ -13,7 +13,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="https://bitbucket.org/Jasonvnm/blog/src/" target="_blank">
+                        <a href="https://github.com/jasonvanmalder/stirl/" target="_blank">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-bitbucket fa-stack-1x fa-inverse"></i>

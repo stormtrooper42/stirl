@@ -83,7 +83,15 @@
 		}
 
 		public static function removingSuccess(){
-			return '<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon glyphicon-check" aria-hidden="true"></span> L\'élément a bien été effacé.</div>';
+			return '<div id="alert_message" class="alert alert-success" role="alert"><span class="glyphicon glyphicon glyphicon-check" aria-hidden="true"></span> L\'élément a bien été effacé.</div>';
+		}
+
+		public static function banSuccess(){
+			return '<div id="alert_message" class="alert alert-success" role="alert"><span class="glyphicon glyphicon glyphicon-check" aria-hidden="true"></span> L\'utilisateur a été banni.</div>';
+		}
+
+		public static function unbanSuccess(){
+			return '<div id="alert_message" class="alert alert-success" role="alert"><span class="glyphicon glyphicon glyphicon-check" aria-hidden="true"></span> L\'utilisateur a été débanni.</div>';
 		}
 
 	}

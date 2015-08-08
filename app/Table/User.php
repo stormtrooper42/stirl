@@ -7,8 +7,8 @@
 	class User{
 
 		private static $_instance;
-		private $id;
-		private $username;
+		public $id;
+		public $username;
 		private $db;
 		private $app;
 
@@ -21,9 +21,8 @@
 			return self::$_instance;
 		}
 
-		public function __construct($id = null,$username = null){
-			$this->id = $id;
-			$this->username = $username;
+		public function __construct($id = null){
+			
 		}
 
 		public static function adminlogin($username,$password){

@@ -64,7 +64,7 @@
                 }
 
                 foreach($query as $article): ?>
-                        <div class="post-preview">
+                        <div class="post-preview post-preview2" onclick="location.href='<?php echo $article->getURL(); ?>';">
                             <a href="<?php echo $article->getURL(); ?>">
                                 <h2 class="post-title">
                                     <?php echo ucfirst($article->title); ?>
@@ -86,7 +86,7 @@
                 <?php }else{ ?>
 
                     <?php foreach($db->query("SELECT * FROM articles ORDER BY id DESC", "App\Table\Article" ) as $article): ?>
-                        <div class="post-preview">
+                        <div class="post-preview post-preview2" onclick="location.href='<?php echo $article->getURL(); ?>';">
                             <a href="<?php echo $article->getURL(); ?>">
                                 <h2 class="post-title">
                                     <?php echo ucfirst($article->title); ?>
