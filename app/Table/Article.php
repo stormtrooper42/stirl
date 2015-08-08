@@ -63,6 +63,12 @@
 			}
 		}
 
+		public static function getArticlesYears($year){
+			$db = new Database('blog');
+			$query = $db->prepare("SELECT * FROM articles WHERE Year(dateOfWriting) = :year ORDER BY id ASC",array("year"=>$year), "App\Table\Article");
+			return $query;
+		}
+
 		public static function postingSuccess(){
 			return '<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon glyphicon-check" aria-hidden="true"></span> Votre article a bien été envoyé.</div>';
 		}

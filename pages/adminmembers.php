@@ -38,76 +38,77 @@
     <?php require_once("../template/header.php"); ?>
 
     <?php
-        if(isset($_SESSION['admin'])){
+        if($user::adminDetectedControl()){
             if($user::isAdmin($_SESSION['admin'],$_SESSION['uniqId']) === false){
                 $app::redirect("index.php");
             }
-        }else{
-            $app::redirect("index.php");
         }
     ?>
     <!-- Main Content -->
     <div class="container">
-
-    <?php
-        require("../template/adminmenu.php");
-    ?>
-    <h2>Liste des membres autorisés</h2>
-    <?php 
-    if(isset($_GET['message']) && $_GET['message'] == "bansuccess"){
-       echo $app::banSuccess();
-    }else if(isset($_GET['message']) && $_GET['message'] == "unbansuccess"){
-       echo $app::unbanSuccess();
-    }
-    $query = $db->prepare("SELECT * FROM users WHERE username <> :username AND ban = 0",array("username"=>$_SESSION['admin']), "App\Table\User");
-    $amIin = $db->query("SELECT * FROM users WHERE ban = 0", "App\Table\User");
-    if($query == null && $amIin == null){
-        echo "Aucun utilisateur autorisé";
-    }else if($query == null && $amIin != null){
-        echo "Aucun utilisateur autorisé à part vous";
-    }
-
-    foreach($query as $user): ?>
-        <hr>
-        <?php
-            if($user == null){
-                echo "Aucun utilisateur autorisé";
-            }
-        ?>
-        <div class="post-preview">
-            
-                <h4>
-                    <?php echo $user->username; ?> 
-                    <a href="index.php?page=adminuserban&id=<?php echo $user->id; ?>"><span style="float:right" class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-                </h4>
-
-            </a>
-
-        </div>
-    <?php endforeach; ?>
-    <hr>
-    <h2>Liste des membres non autorisés</h2>
-    <?php
-    $query2 = $db->prepare("SELECT * FROM users WHERE username <> :username AND ban = 1",array("username"=>$_SESSION['admin']), "App\Table\User");
     
-    if($query2 == null){
-        echo "Aucun utilisateur non autorisé";
-    }
+        <?php
+            require("../template/adminmenu.php");
+        ?>
 
-    foreach($query2 as $user): ?>
-        <hr>
-        <div class="post-preview">
+        <div class="alert alert-info" style="margin-top:15px">La gestion des utilisateurs n'est pas totalement terminée. Certains modules ont été désactivés afin de ne pas déranger.</div>
+        
+        <h2>Liste des membres autorisés</h2>
+
+        <?php 
+
+            if(isset($_GET['message']) && $_GET['message'] == "bansuccess"){
+               echo $app::banSuccess();
+            }else if(isset($_GET['message']) && $_GET['message'] == "unbansuccess"){
+               echo $app::unbanSuccess();
+            }
+
+            $query = $user::selectUsers(0,true);
+            $amIin = $user::selectUsers(0,false);
+
+            echo $user::AmIinList($query,$amIin);
+
+            foreach($query as $user): ?>
+                <hr>
+                <?php
+                    if($user == null){
+                        echo "Aucun utilisateur autorisé";
+                    }
+                ?>
+                <div class="post-preview">
+                    
+                        <h4>
+                            <?php echo $user->username; ?> 
+                            <a href="index.php?page=adminuserban&id=<?php echo $user->id; ?>"><span style="float:right" class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                        </h4>
+
+                    </a>
+
+                </div>
+        <?php  endforeach; ?>
+            <hr>
+            <h2>Liste des membres non autorisés</h2>
+            <?php
+            $query2 = $user::selectUsers(1,true);
             
-                <h4>
-                    <?php echo $user->username; ?> 
-                    <a href="index.php?page=adminuserunban&id=<?php echo $user->id; ?>"><span style="float:right" class="glyphicon glyphicon glyphicon-ok" aria-hidden="true"></span></a>
-                </h4>
+            if($query2 == null){
+                echo "Aucun utilisateur non autorisé";
+            }
 
-            </a>
+            foreach($query2 as $user): ?>
+                <hr>
+                <div class="post-preview">
+                    
+                        <h4>
+                            <?php echo $user->username; ?> 
+                            <a href="index.php?page=adminuserunban&id=<?php echo $user->id; ?>"><span style="float:right" class="glyphicon glyphicon glyphicon-ok" aria-hidden="true"></span></a>
+                        </h4>
 
-        </div>
-    <?php endforeach; ?>
-    <hr>
+                    </a>
+
+                </div>
+        <?php endforeach; ?>
+        <hr>
     </div>
 
     <hr>

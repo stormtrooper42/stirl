@@ -39,9 +39,7 @@
 
 
     <?php
-      if(!isset($_SESSION['admin'])){
-        $app->redirect("index.php?page=welcome");
-      }
+      $user::noAdminDetectedRedirect();
     ?>
     <!-- Main Content -->
     <div class="container">

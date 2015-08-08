@@ -38,12 +38,10 @@
     <?php require_once("../template/header.php"); ?>
 
     <?php
-        if(isset($_SESSION['admin'])){
+        if($user::adminDetectedControl()){
             if($user::isAdmin($_SESSION['admin'],$_SESSION['uniqId']) === false){
                 $app::redirect("index.php");
             }
-        }else{
-            $app::redirect("index.php");
         }
     ?>
     <!-- Main Content -->

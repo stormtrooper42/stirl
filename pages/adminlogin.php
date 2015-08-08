@@ -37,8 +37,6 @@
     <!-- Navigation -->
     <?php require_once("../template/header.php"); ?>
 
-
-
     <!-- Main Content -->
     <div class="container">
         <?php

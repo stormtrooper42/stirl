@@ -2,7 +2,6 @@
 
 	namespace App\Table;
 	use App\Database;
-	use App\App;
 
 	class User{
 
@@ -27,7 +26,7 @@
 
 		public static function adminlogin($username,$password){
 			$db = new Database('blog');
-			$app = new App();
+			$app = \App\App::getInstance();
 			$username = $app::destroyHTML($_POST['username']);
         		$password = $app::destroyHTML($_POST['password']);
 
@@ -59,7 +58,7 @@
 
 		public static function register($username,$email,$password){
 			$db = new Database('blog');
-			$app = new App();
+			$app = \App\App::getInstance();
 			$username = $app::destroyHTML($_POST['username']);
 			$email = $app::destroyHTML($_POST['email']);
         		$password = password_hash($app::destroyHTML($_POST['password']), PASSWORD_DEFAULT);
@@ -75,9 +74,9 @@
 
 		public static function IfHeIsAdminLogHim($username,$uniqId){
 			$db = new Database('blog');
-			$app = new App();
+			$app = \App\App::getInstance();
 			$username = $app::destroyHTML($username);
-        		$uniqId = $app::destroyHTML($uniqId);
+        	$uniqId = $app::destroyHTML($uniqId);
 
 			$isAdmin = $db->prepare("SELECT * FROM users WHERE username = :username AND uniqid = :uniqid",array("username"=>$username,"uniqid"=>$uniqId),"App\Table\User", true);
 			if($isAdmin){
@@ -85,16 +84,56 @@
 			}
 		}
 
+		public static function noAdminDetectedRedirect(){
+			$app = \App\App::getInstance();
+			if(!isset($_SESSION['admin'])){
+		        $app->redirect("index.php?page=welcome");
+		    }
+		}
+
+		public static function adminDetectedControl(){
+			$app = \App\App::getInstance();
+			if(isset($_SESSION['admin'])){
+	            return true;
+	        }else{
+	            $app::redirect("index.php");
+	        }
+		}
+
 		public static function IsAdmin($username,$uniqId){
 			$db = new Database('blog');
-			$app = new App();
+			$app = \App\App::getInstance();
 			$username = $app::destroyHTML($username);
-        		$uniqId = $app::destroyHTML($uniqId);
+        	$uniqId = $app::destroyHTML($uniqId);
 
 			$isAdmin = $db->prepare("SELECT * FROM users WHERE username = :username AND uniqid = :uniqid",array("username"=>$username,"uniqid"=>$uniqId),"App\Table\User", true);
 			if($isAdmin){
 				return true;
 			}
+		}
+
+		public static function selectUsers($banned = false,$amIin = false){
+			$db = new Database('blog');
+
+			$ban = null;
+			
+			if($banned == false){ $ban = 0; }else{ $ban = 1; }
+
+			if($amIin == true){
+				$query = $db->prepare("SELECT * FROM users WHERE username <> :username AND ban = :ban",array("username"=>$_SESSION['admin'],"ban"=>$ban), "App\Table\User");
+			}else{
+				$query = $db->prepare("SELECT * FROM users WHERE ban = :ban",array("ban"=>$ban), "App\Table\User");
+			}
+
+			return $query;
+		}
+
+		public static function amIinList($query,$amIin){
+			if($query == null && $amIin == null){
+                return "Aucun utilisateur autorisé";
+            }else if($query == null && $amIin != null){
+                return "Aucun utilisateur autorisé à part vous";
+            }
 		}
 
 		public static function SHA256($str, $salt, $iterations)
