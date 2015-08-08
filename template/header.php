@@ -17,27 +17,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="index.php?page=welcome">Accueil</a>
-                </li>
-                <?php 
-                        if(!isset($_SESSION['admin'])){
-                            ?>
-                                <li>
-                                    <a style="cursor:pointer" data-toggle="modal" data-target="#myModal">S'inscrire</a>
-                                </li>
-                                <li>
-                                    <a href="contact.html">Me contacter</a>
-                                </li>
-                            <?php
-                        }else{
-                            ?>
-                                <li>
-                                    <a href="index.php?page=logout">Se déconnecter</a>
-                                </li>
-                            <?php
-                        }
-                    ?>
+                
                 
             </ul>
         </div>
@@ -60,7 +40,10 @@
     </div>
     <div class="navbar-collapse navbar-stirl">
              <ul class="nav navbar-nav">
-                <li class="dropdown bordered">
+                <li>
+                    <a href="index.php?page=welcome">Accueil</a>
+                </li>
+                <li class="dropdown">
                   <a href="#" class=" dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Catégories <span class="caret"></span></a>
                   <ul class="dropdown-menu">
                     <li><a href="index.php?page=welcome" style="">Toutes</a></li>
@@ -69,6 +52,24 @@
                     <?php endforeach; ?>
                   </ul>
                 </li>
+                <li>
+                    <a href="index.php?page=archive">Archive</a>
+                </li>
+                
+                <li>
+                    <a href="index.php?page=about">A propos</a>
+                </li>
+
+                <?php
+                    if(isset($_SESSION['admin'])){
+                        ?>
+                            <li>
+                                <a href="index.php?page=logout">Se déconnecter</a>
+                            </li>
+                        <?php
+                    }
+                ?>
+
             </ul>
         </div>
         <!-- /.navbar-collapse -->
