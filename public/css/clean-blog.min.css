@@ -214,7 +214,7 @@ hr.small {
 }
 
 .post-preview2{
-  background-color: rgba(45, 65, 98, .5);
+  background-color: rgba(45, 65, 98, .9);
   border: 1px solid #878D96;
   -webkit-background-clip: padding-box; /* for Safari */
   background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
@@ -226,11 +226,12 @@ hr.small {
     -o-transition: background 0.2s linear;
     transition: background 0.2s linear;
   color:#404040;
+  margin-bottom: 30px;
 }
 
 .post-preview2:hover{
   cursor:pointer;
-  background-color: rgba(45, 65, 98, .9);
+  background-color: rgba(45, 65, 98, 1);
   color:white;
 }
 
@@ -483,6 +484,15 @@ body {
   text-align:center;
 }
 
+.linkcircle{
+  color: rgba(45, 65, 98, 0.9);
+  -webkit-transition: color 0.2s linear;
+    -moz-transition: color 0.2s linear;
+    -ms-transition: color 0.2s linear;
+    -o-transition: color 0.2s linear;
+    transition: color 0.2s linear;
+}
+
 .linkcircle:hover{
-  color: #405270;
+  color: rgba(45, 65, 98, 1);
 }

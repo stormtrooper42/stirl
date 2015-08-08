@@ -80,7 +80,6 @@
                             </a>
                             <p class="post-meta">Posté le <?php echo $article->getDate(); ?></p>
                         </div>
-                        <hr>
                     <?php endforeach; ?>
 
                 <?php }else{ ?>
@@ -102,7 +101,6 @@
                             </a>
                             <p class="post-meta">Posté le <?php echo $article->getDate(); ?></p>
                         </div>
-                        <hr>
                     <?php endforeach;
                 }
                 ?>
