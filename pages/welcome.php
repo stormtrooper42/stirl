@@ -57,7 +57,7 @@
                 
                 $category = $app::destroyHTML($_GET['category']);
                 
-                $query = $db->prepare("SELECT * FROM articles WHERE category = :category ORDER BY id DESC",array("category"=>$category), "App\Table\Article");
+                $query = $db->prepare("SELECT * FROM articles WHERE category = :category ORDER BY dateOfWriting DESC, id DESC",array("category"=>$category), "App\Table\Article");
                 
                 if($query == null){
                     echo "Aucun article trouvé...";
@@ -84,7 +84,7 @@
 
                 <?php }else{ ?>
 
-                    <?php foreach($db->query("SELECT * FROM articles ORDER BY id DESC", "App\Table\Article" ) as $article): ?>
+                    <?php foreach($db->query("SELECT * FROM articles ORDER BY dateOfWriting DESC, id DESC", "App\Table\Article" ) as $article): ?>
                         <div class="post-preview post-preview2" onclick="location.href='<?php echo $article->getURL(); ?>';">
                             <a href="<?php echo $article->getURL(); ?>">
                                 <h2 class="post-title" style="font-size:25px;">
