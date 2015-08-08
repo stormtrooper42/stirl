@@ -8,7 +8,7 @@ Stirl is a ultra light blog system using PHP without framework.
 
 ### Installation
 
-You need to modify the config file in config/config.php
+- You need to modify the config file in config/config.php
 
 config.php:
 
@@ -22,3 +22,8 @@ config.php:
 		"db_name" => "blog"
 	);
 ```
+
+- Then go on http://yourdomain/index.php?page=ACCOUNTCREATION
+- Create your account
+- DELETE THE ACCOUNTCREATION.PHP FILE IN PAGES FOLDERS
+- Go in your database, users table and change 0 to 1 in admin column
