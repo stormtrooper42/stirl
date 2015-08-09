@@ -101,12 +101,12 @@ public function getDate(){
 - Finally create a es.php file in public/lang folder, copy/paste en.php (or fr.php in es.php) and translate/complete it
 ```php
 $translator = array(
-	"FRENCH_LANG" 		=> 		"francés",
-	"ENGLISH_LANG"		=>		"inglés",
-	"HOME"			=>		"acogida",
-	"CATEGORIES"		=>		"categorías",
-	"ALL_CATEGORIES"	=>		"todas",
-	"ARCHIVE"		=>		"archivo",
-	"ABOUT"			=>		"sobre",
+	"FRENCH_LANG"    => "francés",
+	"ENGLISH_LANG"   => "inglés",
+	"HOME"           => "acogida",
+	"CATEGORIES"     => "categorías",
+	"ALL_CATEGORIES" => "todas",
+	"ARCHIVE         => "archivo",
+	"ABOUT"          => "sobre",
 	// ...
 ```
