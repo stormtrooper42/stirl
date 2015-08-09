@@ -43,8 +43,6 @@
 		"ARTICLES_LIST"		=>		"Liste des articles",
 		"NEW_ARTICLE"		=>		"Nouvel article",
 		"POSTED_ON"			=>		"Posté le",
-		"ARTICLE_DELETE"	=>		"Supprimer l'article",
-		""					=>		"",
-		""					=>		""
+		"ARTICLE_DELETE"	=>		"Supprimer l'article"
 	);
 ?>
