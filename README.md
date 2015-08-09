@@ -106,7 +106,7 @@ $translator = array(
 	"HOME"           => "acogida",
 	"CATEGORIES"     => "categorías",
 	"ALL_CATEGORIES" => "todas",
-	"ARCHIVE         => "archivo",
+	"ARCHIVE"         => "archivo",
 	"ABOUT"          => "sobre",
 	// ...
 ```
