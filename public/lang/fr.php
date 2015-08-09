@@ -40,7 +40,7 @@
 		"CATEGORY"			=>		"Catégorie",
 		"CONTENT"			=>		"Contenu",
 		"ARTICLE_SEND"		=>		"Envoyer l'article",
-		"ARTICLES_LIST"		=>		"Liste des articles",
+		"ARTICLE_LIST"		=>		"Liste des articles",
 		"NEW_ARTICLE"		=>		"Nouvel article",
 		"POSTED_ON"			=>		"Posté le",
 		"ARTICLE_DELETE"	=>		"Supprimer l'article"
