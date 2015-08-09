@@ -16,7 +16,7 @@
 
     <!-- Custom CSS -->
     <link href="css/clean-blog.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="css/flag-icon.min.css">
     <!-- Custom Fonts -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -46,17 +46,17 @@
             $app->redirect("index.php?page=welcome");
         }
     ?>
-    <h2>Hey, <?php echo $_SESSION['admin']; ?> ! Ça va bien ?</h2>
+    <h2><?php echo $translator['HEY'].", ".$_SESSION['admin']." ! ".$translator['HOW_ARE_YOU']." ?" ?></h2>
     
-    <h3>Statistiques du jour:</h3>
+    <h3><?php echo $translator['DAY_STATS'];  ?>:</h3>
     Maybe
     <br />
 
-    <h3>Statistiques du mois:</h3>
+    <h3><?php echo $translator['MONTH_STATS'];  ?>:</h3>
     Maybe
     <br />
 
-    <h3>Statistiques de l'année:</h3>
+    <h3><?php echo $translator['YEAR_STATS'];  ?>:</h3>
     Maybe
     <br />
 

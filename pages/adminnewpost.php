@@ -9,14 +9,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><?php echo $config->get("blog_title"); ?> - Poster un article</title>
+    <title><?php echo $config->get("blog_title"); ?></title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="css/clean-blog.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="css/flag-icon.min.css">
     <!-- Custom Fonts -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -46,7 +46,7 @@
     <?php
         require("../template/adminmenu.php");
     ?>
-    <h2>Ecrire un article</h2>
+    <h2><?php echo $translator['ARTICLE_WRITE']; ?></h2>
 
     	<?php 
     		if($user::adminDetectedControl()){
@@ -60,7 +60,7 @@
 						if(!empty($title) && !empty($content)){
 
                             if(empty($category)){
-                                $category = "Non classé";
+                                $category = $translator['UNCLASSIFIED'];
                             }else{
                                 $categories->registerCategoryIfDoesntExist();
                             }
@@ -76,7 +76,7 @@
 							));
 						}
 						$article = new App\Table\Article();
-						echo $article::postingSuccess();
+						echo $article::postingSuccess($translator);
     				}
 				}else{
 					$app::redirect("index.php");
@@ -88,10 +88,10 @@
 
     	<form id="newpost" name="newpost" method="POST">
 			<?php
-        		echo $form->input("title","Titre","text");
-                echo $form->input("category","Catégorie","text");
-        		echo $form->textarea("content","Contenu",10,5);
-        		echo $form->submit("submit","Envoyer l'article");
+        		echo $form->input("title",$translator['TITLE'],"text");
+                echo $form->input("category",$translator['CATEGORY'],"text");
+        		echo $form->textarea("content",$translator['CONTENT'],10,5);
+        		echo $form->submit("submit",$translator['ARTICLE_SEND']);
         	?>
         </form>
     <hr>

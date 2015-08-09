@@ -16,7 +16,7 @@
 
     <!-- Custom CSS -->
     <link href="css/clean-blog.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="css/flag-icon.min.css">
     <!-- Custom Fonts -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -50,7 +50,7 @@
     <?php
         require("../template/adminmenu.php");
     ?>
-    <h2>Liste des catégories</h2>
+    <h2><?php echo $translator['CATEGORY_LIST']; ?></h2>
     <?php 
     if(isset($_GET['message']) && $_GET['message'] == "success"){
        echo $app::removingSuccess();

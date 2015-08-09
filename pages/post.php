@@ -21,7 +21,7 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="css/flag-icon.min.css">
     <!-- Custom CSS -->
     <link href="css/clean-blog.min.css" rel="stylesheet">
 
@@ -51,13 +51,13 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <h1 style="font-size:25px;"><?php echo $article->title; ?></h1>
-                    Posté le <?php echo $article->getDate(); ?>
+                    <?php echo $translator['POSTED_ON']." ".$article->getDate(); ?>
                     <p><?php 
                         echo $article->getContent();
                     ?></p>
                     <ul class="pager">
                         <li class="previous">
-                            <a href="index.php?page=welcome">&larr; Revenir à l'accueil</a>
+                            <a href="index.php?page=welcome">&larr; <?php echo $translator['GOHOME']; ?></a>
                         </li>
 
                         <li class="next">
@@ -65,7 +65,7 @@
                                 if($user::adminDetectedControl()){
                                     if($user::isAdmin($_SESSION['admin'],$_SESSION['uniqId'])){
                                         ?>
-                                             <a href="index.php?page=adminpostremove&id=<?php echo $article->id; ?>"><span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span> Supprimer l'article</a>
+                                             <a href="index.php?page=adminpostremove&id=<?php echo $article->id; ?>"><span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span> <?php echo $translator['ARTICLE_DELETE']; ?></a>
                                         <?php
                                     }
                                 } 

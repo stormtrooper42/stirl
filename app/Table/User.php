@@ -10,18 +10,18 @@
 		public $username;
 		private $db;
 		private $app;
+		public static $translator = null;
 
-		public static function getInstance()
+		public static function getInstance($translator = null)
 		{
 			if(is_null(self::$_instance)){
 				self::$_instance = new User();
+				if(empty(self::$translator)){
+					self::$translator = $translator;
+				}
 			}
 
 			return self::$_instance;
-		}
-
-		public function __construct($id = null){
-			
 		}
 
 		public static function adminlogin($username,$password){
@@ -147,20 +147,16 @@
 			return $salt;
 		}
 
-		public static function errorInfos(){
-			return '<div style="margin-top:-50px" class="alert alert-danger">Veuillez entrer des identifiants corrects ! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
-		}
-
 		public static function errorPw(){
-			return '<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span> Vos identifiants sont incorrects</div>';
+			return '<div style="margin-top:-20px" class="alert alert-danger" role="alert"><span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span> '.self::$translator["USER_INCORRECT"].' ! </div>';
 		}
 
 		public static function errorNotAllowed(){
-			return '<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span> Vous n\'avez pas le droit d\'accéder à cette page.</div>';
+			return '<div style="margin-top:-20px" class="alert alert-danger" role="alert"><span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span> '.self::$translator["USER_NOT_ALLOWED"].'.</div>';
 		}
 
 		public static function successRegister(){
-			return '<div style="margin-top:-50px" class="alert alert-success">Vous êtes désormais inscrit ! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+			return '<div style="margin-top:-50px" class="alert alert-success">'.self::$translator["REGISTER_SUCCESS"].' ! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
 		}
 
 

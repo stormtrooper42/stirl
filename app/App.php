@@ -4,14 +4,30 @@
 	class App{
 
 		private static $_instance;
+		public static $translator = null;
 
-		public static function getInstance()
+		public static function getInstance($translator = null)
 		{
 			if(is_null(self::$_instance)){
 				self::$_instance = new App();
+				if(empty(self::$translator)){
+					self::$translator = $translator;
+				}
 			}
 
 			return self::$_instance;
+		}
+
+		public static function cookieCreate($name,$value,$time)
+		{
+			$cookie = setcookie($name, $value, strtotime($time));
+			return $cookie;
+		}
+
+		public static function cookieDestroy($name){
+			if (isset($_COOKIE[$name])) {
+			    unset($_COOKIE[$name]);
+			}
 		}
 
 		public static function sessionCreate($sessionName,$value)
@@ -80,15 +96,15 @@
 		}
 
 		public static function removingSuccess(){
-			return '<div id="alert_message" class="alert alert-success" role="alert"><span class="glyphicon glyphicon glyphicon-check" aria-hidden="true"></span> L\'élément a bien été effacé.</div>';
+			return '<div id="alert_message" class="alert alert-success" role="alert"><span class="glyphicon glyphicon glyphicon-check" aria-hidden="true"></span> '.self::$translator["REMOVING_SUCCESS"].'</div>';
 		}
 
 		public static function banSuccess(){
-			return '<div id="alert_message" class="alert alert-success" role="alert"><span class="glyphicon glyphicon glyphicon-check" aria-hidden="true"></span> L\'utilisateur a été banni.</div>';
+			return '<div id="alert_message" class="alert alert-success" role="alert"><span class="glyphicon glyphicon glyphicon-check" aria-hidden="true"></span> '.self::$translator["USER_BANNED"].'</div>';
 		}
 
 		public static function unbanSuccess(){
-			return '<div id="alert_message" class="alert alert-success" role="alert"><span class="glyphicon glyphicon glyphicon-check" aria-hidden="true"></span> L\'utilisateur a été débanni.</div>';
+			return '<div id="alert_message" class="alert alert-success" role="alert"><span class="glyphicon glyphicon glyphicon-check" aria-hidden="true"></span> '.self::$translator["USER_UNBANNED"].'</div>';
 		}
 
 	}

@@ -16,7 +16,7 @@
 
     <!-- Custom CSS -->
     <link href="css/clean-blog.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="css/flag-icon.min.css">
     <!-- Custom Fonts -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -51,9 +51,9 @@
             require("../template/adminmenu.php");
         ?>
 
-        <div class="alert alert-info" style="margin-top:15px">La gestion des utilisateurs n'est pas totalement terminée. Certains modules ont été désactivés afin de ne pas déranger.</div>
+        <div class="alert alert-info" style="margin-top:15px"><?php echo $translator['REGISTER_MESSAGE']; ?></div>
         
-        <h2>Liste des membres autorisés</h2>
+        <h2><?php echo $translator['MEMBERS_LIST_NB']; ?></h2>
 
         <?php 
 
@@ -87,7 +87,7 @@
                 </div>
         <?php  endforeach; ?>
             <hr>
-            <h2>Liste des membres non autorisés</h2>
+            <h2><?php echo $translator['MEMBERS_LIST_B']; ?></h2>
             <?php
             $query2 = $user::selectUsers(1,true);
             

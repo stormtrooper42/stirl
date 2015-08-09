@@ -45,11 +45,11 @@
 		                <h2>
 		                    404 Not Found</h2>
 		                <div class="error-details">
-		                    Désolé, la page que vous avez demandé n'existe pas.
+		                    <?php echo $translator['404_MESSAGE']; ?>
 		                </div>
 		                <div class="error-actions">
-		                    <a href="index.php" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span> Retour à l'accueil</a>
-		                    <a href="#" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> Contacter le support </a>
+		                    <a href="index.php" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span> <?php echo $translator['GOHOME']; ?></a>
+		                    <a href="#" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> <?php echo $translator['404_SUPPORT']; ?></a>
 		                </div>
 		            </div>
 		        </div>

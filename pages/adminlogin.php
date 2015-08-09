@@ -16,7 +16,7 @@
 
     <!-- Custom CSS -->
     <link href="css/clean-blog.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="css/flag-icon.min.css">
     <!-- Custom Fonts -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -50,7 +50,7 @@
 					$user->adminlogin($_POST['username'],$_POST['password']);
         		}else
         		{
-        			echo $user::errorInfos();
+        			echo $user::errorPw();
         		}
         	}
 
@@ -61,9 +61,9 @@
         ?>
         <form id="login" name="login" method="POST">
 			<?php
-        		echo $form->input("username","Nom d'utilisateur","text");
-        		echo $form->input("password","Mot de passe","password");
-        		echo $form->submit("submit","Se connecter");
+        		echo $form->input("username",$translator['USERNAME'],"text");
+        		echo $form->input("password",$translator['PASSWORD'],"password");
+        		echo $form->submit("submit",$translator['LOG_IN']);
         	?>
         </form>
     </div>

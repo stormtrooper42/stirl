@@ -16,7 +16,7 @@
 
     <!-- Custom CSS -->
     <link href="css/clean-blog.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="css/flag-icon.min.css">
     <!-- Custom Fonts -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -82,7 +82,7 @@
                                         ?>
                                     </h3>
                                 </a>
-                                <p class="post-meta">Posté le <?php echo $article->getDate(); ?></p>
+                                <p class="post-meta"><?php echo $translator['POSTED_ON']." ".$article->getDate(); ?></p>
                             </div>
                         <?php endforeach; ?>
 
@@ -105,7 +105,7 @@
                                         ?>
                                     </h3>
                                 </a>
-                                <p class="post-meta">Posté le <?php echo $article->getDate(); ?></p>
+                                <p class="post-meta"><?php echo $translator['POSTED_ON']." ".$article->getDate(); ?></p>
                             </div>
                         <?php endforeach;
                 }

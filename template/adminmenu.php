@@ -1,9 +1,9 @@
     <a class="btn btn-default" href="index.php?page=adminpost">
-    	Gestion des articles
+    	<?php echo $translator['POST_MAN']; ?>
     </a>
     <a class="btn btn-default" href="index.php?page=admincategories">
-    	Gestion des catégories
+    	<?php echo $translator['CATEGORY_MAN']; ?>
     </a>
     <a class="btn btn-default" href="index.php?page=adminmembers">
-    	Gestion des membres
+    	<?php echo $translator['MEMBERS_MAN']; ?>
     </a>

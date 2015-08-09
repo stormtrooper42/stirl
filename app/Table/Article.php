@@ -50,6 +50,15 @@
 		public function getDate(){
 			$originalDate = $this->dateOfWriting;
 			$newDate = date("d/m/Y", strtotime($originalDate));
+
+			if(isset($_COOKIE['lang'])){
+				if($_COOKIE['lang'] == "fr"){
+					$newDate = date("d/m/Y", strtotime($originalDate));
+				}else if($_COOKIE['lang'] == "en"){
+					$newDate = date("Y/m/d", strtotime($originalDate));
+				}
+			}
+
 			return $newDate;
 		}
 
@@ -85,15 +94,8 @@
 			return $query;
 		}
 
-		public static function postingSuccess(){
-			return '<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon glyphicon-check" aria-hidden="true"></span> Votre article a bien été envoyé.</div>';
+		public static function postingSuccess($translator){
+			return '<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon glyphicon-check" aria-hidden="true"></span> '.$translator["POSTING_SUCCESS"].'.</div>';
 		}
-
-		public static function removingSuccess(){
-			return '<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon glyphicon-check" aria-hidden="true"></span> L\'élément a bien été effacé.</div>';
-		}
-
-
 	}
-
 ?>

@@ -17,8 +17,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                
-                
+                <li><a href="index.php?page=changelanguage&lang=fr"><span class="flag-icon flag-icon-fr"></span> <?php echo $translator['FRENCH_LANG']; ?></a></li>
+                <li><a href="index.php?page=changelanguage&lang=en"><span class="flag-icon flag-icon-gb"></span> <?php echo $translator['ENGLISH_LANG']; ?></a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -41,30 +41,30 @@
     <div class="navbar-collapse navbar-stirl">
              <ul class="nav navbar-nav">
                 <li>
-                    <a href="index.php?page=welcome">Accueil</a>
+                    <a href="index.php?page=welcome"><?php echo $translator['HOME']; ?></a>
                 </li>
                 <li class="dropdown">
-                  <a href="#" class=" dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Catégories <span class="caret"></span></a>
+                  <a href="#" class=" dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $translator['CATEGORIES']; ?> <span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="index.php?page=welcome" style="">Toutes</a></li>
+                    <li><a href="index.php?page=welcome" style=""><?php echo $translator['ALL_CATEGORIES']; ?></a></li>
                     <?php foreach($db->query("SELECT * FROM categories", "App\Table\Categories") as $category): ?>
                         <li style="height:20px;"><a style="padding:0" href="<?php echo $category->getURL(); ?>" style="padding-top:15px;"><?php echo $category->getName(); ?></a></li>
                     <?php endforeach; ?>
                   </ul>
                 </li>
                 <li>
-                    <a href="index.php?page=archive">Archive</a>
+                    <a href="index.php?page=archive"><?php echo $translator['ARCHIVE']; ?></a>
                 </li>
                 
                 <li>
-                    <a href="index.php?page=about">A propos</a>
+                    <a href="index.php?page=about"><?php echo $translator['ABOUT']; ?></a>
                 </li>
 
                 <?php
                     if(isset($_SESSION['admin'])){
                         ?>
                             <li>
-                                <a href="index.php?page=logout">Se déconnecter</a>
+                                <a href="index.php?page=logout"><?php echo $translator['LOGOUT']; ?></a>
                             </li>
                         <?php
                     }

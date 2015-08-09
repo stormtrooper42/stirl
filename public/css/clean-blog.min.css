@@ -365,10 +365,19 @@ form .row:first-child .floating-label-form-group {
   font-size: 16px;
   padding: 25px 35px;
 }
+
+.btn-default{
+  -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+
 .btn-default:hover,
 .btn-default:focus {
-  background-color: #0085a1;
-  border: 1px solid #0085a1;
+  background-color: rgba(45, 65, 98, 0.9);
+  border: 1px solid rgba(45, 65, 98, 0.9);
   color: white;
 }
 .pager {

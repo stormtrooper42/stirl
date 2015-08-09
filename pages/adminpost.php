@@ -16,7 +16,7 @@
 
     <!-- Custom CSS -->
     <link href="css/clean-blog.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="css/flag-icon.min.css">
     <!-- Custom Fonts -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -46,16 +46,16 @@
     ?>
     <!-- Main Content -->
     <div class="container">
-    <a class="btn btn-default" href="index.php?page=adminnewpost">Nouvel article</a>
+    <a class="btn btn-default" href="index.php?page=adminnewpost"><?php echo $translator['NEW_ARTICLE']; ?></a>
     <?php
         require("../template/adminmenu.php");
     ?>
-    <h2>Liste des articles</h2>
+    <h2><?php echo $translator['ARTICLE_LIST']; ?></h2>
     <?php 
     if(isset($_GET['message']) && $_GET['message'] == "success"){
         echo $app::removingSuccess();
     }
-    foreach($db->query("SELECT * FROM articles", "App\Table\Article") as $article): ?>
+    foreach($db->query("SELECT * FROM articles ORDER BY id DESC", "App\Table\Article" ) as $article): ?>
         <hr>
         <div class="post-preview">
             

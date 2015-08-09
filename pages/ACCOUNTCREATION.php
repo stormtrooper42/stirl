@@ -11,9 +11,9 @@
 ?>
 <form id="register" name="register" method="POST">
 <?php
-	echo $form->input("username","Nom d'utilisateur","text");
-	echo $form->input("email","Adresse email","email");
-    echo $form->input("password","Mot de passe","password");
+	echo $form->input("username","username","text");
+	echo $form->input("email","email","email");
+    echo $form->input("password","password","password");
 ?>
-<button type="submit" name="Rsubmit" id="submit" class="btn btn-primary">S'inscrire</button>
+<button type="submit" name="Rsubmit" id="submit" class="btn btn-primary">Sign in</button>
 </form>
