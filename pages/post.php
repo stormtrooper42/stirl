@@ -61,14 +61,14 @@
                         </li>
 
                         <li class="next">
-                            <?php 
-                                if($user::adminDetectedControl()){
-                                    if($user::isAdmin($_SESSION['admin'],$_SESSION['uniqId'])){
-                                        ?>
-                                             <a href="index.php?page=adminpostremove&id=<?php echo $article->id; ?>"><span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span> <?php echo $translator['ARTICLE_DELETE']; ?></a>
-                                        <?php
-                                    }
-                                } 
+                            <?php
+                            if(isset($_SESSION['admin'])){
+                                if($user::isAdmin($_SESSION['admin'],$_SESSION['uniqId'])){
+                                    ?>
+                                    <a href="index.php?page=adminpostremove&id=<?php echo $article->id; ?>"><span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span> <?php echo $translator['ARTICLE_DELETE']; ?></a>
+                                <?php
+                                }
+                            }
                             ?>
                         </li>
                     </ul>
